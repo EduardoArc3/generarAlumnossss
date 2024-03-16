@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+			var alumnos = "";
+      const apellidos1 = [
+  "Messi", "Ronaldo", "Neymar", "Mbappé", "Suárez", "Lewandowski", "Salah", "Modric", "Hazard", "De Bruyne",
+  "Kane", "Lukaku", "Kroos", "Griezmann", "Ramos", "Benzema", "Lloris", "Van Dijk", "Alisson", "De Gea",
+  "Pogba", "Varane", "Mané", "Neuer", "Agüero", "Sterling", "Cavani", "Aubameyang", "Firmino", "Thiago",
+  "Sancho", "Ter Stegen", "Kimmich", "Courtois", "Silva", "Vidal", "Di María", "Laporte", "Rodrigo", "Müller",
+  "De Jong", "Navas", "Suárez", "Fernandes", "Jorginho", "Reus", "Koulibaly", "Trent-Alexander Arnold", "Foden", "Hummels",
+  "Alli", "Coutinho", "Immobile", "Mertens", "Dybala", "Fabinho", "Martial", "Dembélé", "Thiago Silva", "Milinković-Savić",
+  "Wijnaldum", "Gündoğan", "Sánchez", "Laporte", "Lindelöf", "Verratti", "Giménez", "Morata", "David Luiz", "Kovačić",
+  "Pépé", "Smalling", "Lukaku", "Fernandinho", "Pulisic", "Gosens", "Acuña", "Laimer", "Gnabry", "Jota",
+  "Lucas Hernández", "Partey", "Tolisso", "Hakimi", "Ziyech", "Bernardo Silva", "Krovinović", "Diallo", "Marquinhos", "Werner",
+  "Zinchenko", "Hernández", "Barella", "Bernardeschi", "Moura", "Kessié", "Rabiot", "Grealish", "Trezeguet", "Barella"
+];
+
+const apellidos2 = [
+  "James", "Bryant", "Durant", "Curry", "Jordan", "Davis", "Antetokounmpo", "Harden", "Irving", "Leonard",
+  "Lillard", "Paul", "Westbrook", "Embiid", "Jokic", "Doncic", "Thompson", "Butler", "Young", "Adebayo",
+  "Booker", "Tatum", "George", "Beal", "Harris", "Simmons", "Walker", "Drummond", "Ingram", "Zion",
+  "Harris", "Duncan", "Robinson", "Mitchell", "Porter", "Sabonis", "LaVine", "Capela", "Randle", "Hayward",
+  "Collins", "McCollum", "Barrett", "Sexton", "Green", "White", "Fox", "Covington", "VanVleet", "Bogdanovic",
+  "Valanciunas", "Holiday", "Bledsoe", "Morant", "Markkanen", "Fultz", "Allen", "Jones", "Vucevic", "Brogdon",
+  "Conley", "Bamba", "Bridges", "Hachimura", "Clark", "Murray", "Nurkic", "Oladipo", "Rubio", "Jackson",
+  "Reddish", "Nance", "Hield", "Richardson", "Oubre", "Satoransky", "Rozier", "Adams", "Prince", "Brooks",
+  "Gilgeous-Alexander", "Chriss", "Burks", "Okogie", "Bembry", "Hartenstein", "Kennard", "Knox", "Huerter", "Anunoby",
+  "Saric", "Smith", "Williams", "Robinson", "Bacon", "Wagner", "Bolden", "Baynes", "Clarke", "Thomas"
+];
+
+const nombres1 = [
+  "Léa", "Lucas", "Manon", "Louis", "Chloé", "Théo", "Emma", "Hugo", "Camille", "Enzo",
+  "Inès", "Nathan", "Sarah", "Mathis", "Clara", "Tom", "Jade", "Gabriel", "Maëlys", "Romain",
+  "Lola", "Ethan", "Louna", "Noah", "Eva", "Maxime", "Léna", "Antoine", "Zoé", "Alexandre",
+  "Mia", "Paul", "Lisa", "Axel", "Manon", "Evan", "Léna", "Jules", "Julia", "Raphaël",
+  "Léna", "Arthur", "Louise", "Baptiste", "Romane", "Nolan", "Margaux", "Maël", "Ava", "Matéo",
+  "Charlotte", "Lucas", "Juliette", "Mathéo", "Romane", "Nathan", "Léa", "Evan", "Louise", "Noé",
+  "Lou", "Alexandre", "Sofia", "Enzo", "Léna", "Thomas", "Eva", "Léo", "Mila", "Lucas",
+  "Lola", "Adam", "Zoé", "Louis", "Ambre", "Raphaël", "Anna", "Gabriel", "Juliette", "Ethan",
+  "Romane", "Tom", "Alice", "Hugo", "Léa", "Noah", "Chloé", "Liam", "Léa", "Nina", "Matteo",
+  "Eva", "Axel", "Manon", "Jules", "Lilou", "Lucas", "Maëlys", "Nathan", "Zoé", "Clément",
+  "Ambre", "Arthur", "Lina", "Théo", "Jade", "Noah", "Louise", "Ethan", "Léa", "Romain",
+  "Léna", "Julien", "Lola", "Maxime", "Emma", "Enzo", "Mia", "Lucas", "Chloé", "Evan", "Haruto", "Yua", "Sota", "Rio", "Yui", "Sora", "Hina", "Ren", "Mao", "Riku",
+  "Hikari", "Kaito", "Riko", "Kota", "Yuna", "Toma", "Karin", "Minato", "Akari", "Hayato",
+  "Yuzu", "Kakeru", "Nene", "Daiki", "Mei", "Koki", "Hana", "Ryota", "Aoi", "Shoma",
+  "Arisa", "Yuuma", "Nana", "Kazuki", "Mana", "Takumi", "Misaki", "Yuto", "Miyu", "Ryota",
+  "Yurika", "Tatsuki", "Sakura", "Takeru", "Rin", "Yuki", "Asahi", "Kanon", "Kenta", "Yumeko",
+  "Tohru", "Rinako", "Rikuto", "Miku", "Kazuko", "Hiroto", "Aiko", "Renka", "Kouki", "Yuko",
+  "Shogo", "Mai", "Toshiro", "Nao", "Yusuke", "Ami", "Kazumi", "Satoshi", "Ayaka", "Kouki",
+  "Yuki", "Hinata", "Minori", "Riku", "Emi", "Rui", "Sakiko", "Tsubasa", "Kumiko", "Hiroki",
+  "Saki", "Tatsuya", "Kaho", "Ren", "Natsuki", "Kenshin", "Asuka", "Issei", "Kanna", "Yuki",
+  "Ryoko", "Hayate", "Mizuki", "Yuma", "Haruka", "Kazuma", "Sayuri", "Naoya", "Hikaru", "Akane"
+];
+const nombres2 = [
+  "Lionel", "Cristiano", "Neymar", "Kylian", "Luis", "Robert", "Mohamed", "Luka", "Eden", "Kevin",
+  "Harry", "Romelu", "Toni", "Antoine", "Sergio", "Karim", "Hugo", "Virgil", "Alisson", "David",
+  "Paul", "Raphaël", "Sadio", "Manuel", "Sergio", "Edinson", "Pierre-Emerick", "Roberto", "Thiago", "Jadon",
+  "Marc-André", "Joshua", "Marcos", "Thibaut", "David", "Arturo", "Ángel", "Aymeric", "Frenkie", "Keylor",
+  "Jamie", "Casemiro", "Erling", "Thomas", "Riyad", "Rúben", "Son", "Trent", "Phil", "Mats",
+  "Corentin", "Nicolás", "Raheem", "Ángel", "Cristian", "Timo", "Robin", "Matthijs", "João", "Gabriel",
+  "Bernardo", "Mateo", "Danilo", "Federico", "Serge", "Lucas", "Lucas", "Bukayo", "Thomas", "Héctor",
+  "Lucas", "David", "Oleksandr", "Theo", "Raphaël", "Alex", "Aaron", "Callum", "Pablo", "Christian",
+  "Anthony", "Mason", "Serge", "Aaron", "Wilfried", "Tomáš", "Benjamin", "Joachim", "Leroy", "Julian",
+  "Georginio", "Adama", "Ruben", "Pedro", "Harvey", "Abdoulaye", "Ozan", "Dele", "Giovani"
+];
+
+function generar() {
+    var num = parseInt(document.getElementById("num").value);
+    if (num < 1) {
+        num = 5;
+        document.getElementById("num").value = 5;
+    }
+    alumnos = "CREATE DATABASE IF NOT EXISTS universidad;<br>" +
+        "USE universidad;<br>" +
+        "CREATE TABLE IF NOT EXISTS alumnos(<br>" +
+        "&emsp;alumno_matricula INT UNSIGNED NOT NULL UNIQUE, <br>" +
+        "&emsp;alumno_ap1 VARCHAR(255) NOT NULL, <br>" +
+        "&emsp;alumno_ap2 VARCHAR(255), <br>" +
+        "&emsp;alumno_nombres VARCHAR(255) NOT NULL, <br>" +
+        "&emsp;alumno_correo VARCHAR(255) NOT NULL UNIQUE<br>" +
+        ");<br>" +
+        "DELETE FROM alumnos;<br>" +
+        "INSERT INTO alumnos(alumno_matricula, alumno_ap1, alumno_ap2, alumno_nombres, alumno_correo) VALUES<br>";
+    var matricula = 222206011;
+    for (let i = 1; i < (num + 1); i++) {
+        alumnos += "&emsp;(" + (matricula) + ", '" + (apellidos1[Math.floor(Math.random() * apellidos1.length)]) + "', '" + (apellidos2[Math.floor(Math.random() * apellidos2.length)]) + "', '" + (nombres1[Math.floor(Math.random() * nombres1.length)]) + " " + (nombres2[Math.floor(Math.random() * nombres2.length)]) + "', '" + (matricula++) + "@universidad.mx" + "')";
+        if (i == num) {
+            alumnos += ";";
+        } else {
+            alumnos += ",<br>";
+        }
+    }
+    document.getElementById("salida").innerHTML = alumnos;
+}
+
+
+			function generarSQL(){
+				var archivo = document.createElement('a');
+    				var salida = alumnos.replace(/<br>/g, '\n').replace(/&emsp;/g, '\t').trim();
+    				archivo.setAttribute('href', 'data:text/plane;charset=utf-8,'+ encodeURIComponent(salida));
+    				archivo.setAttribute('download', "universidad.sql");
+    				archivo.style.display = 'none';
+    				document.body.appendChild(archivo);
+    				archivo.click();
+    				document.body.removeChild(archivo);
+			}
+
+      function generarCSV(){
+        var archivo = document.createElement('a');
+    				var salida = alumnos.replace(/<br>/g, '\n').replace(/&emsp;/g, '\t').trim();
+    				archivo.setAttribute('href', 'data:text/plane;charset=utf-8,'+ encodeURIComponent(salida));
+    				archivo.setAttribute('download', "universidad.csv");
+    				archivo.style.display = 'none';
+    				document.body.appendChild(archivo);
+    				archivo.click();
+    				document.body.removeChild(archivo);
+			}
+
+      function generarJSON(){
+        var archivo = document.createElement('a');
+    				var salida = alumnos.replace(/<br>/g, '\n').replace(/&emsp;/g, '\t').trim();
+    				archivo.setAttribute('href', 'data:text/plane;charset=utf-8,'+ encodeURIComponent(salida));
+    				archivo.setAttribute('download', "universidad.json");
+    				archivo.style.display = 'none';
+    				document.body.appendChild(archivo);
+    				archivo.click();
+    				document.body.removeChild(archivo);
+			}
+
+      function generarEXCEL(){
+        var archivo = document.createElement('a');
+    				var salida = alumnos.replace(/<br>/g, '\n').replace(/&emsp;/g, '\t').trim();
+    				archivo.setAttribute('href', 'data:text/plane;charset=utf-8,'+ encodeURIComponent(salida));
+    				archivo.setAttribute('download', "universidad.xlsx");
+    				archivo.style.display = 'none';
+    				document.body.appendChild(archivo);
+    				archivo.click();
+    				document.body.removeChild(archivo);
+			}
+
+      function generarPDF(){
+        var archivo = document.createElement('a');
+    				var salida = alumnos.replace(/<br>/g, '\n').replace(/&emsp;/g, '\t').trim();
+    				archivo.setAttribute('href', 'data:text/plane;charset=utf-8,'+ encodeURIComponent(salida));
+    				archivo.setAttribute('download', "universidad.pdf");
+    				archivo.style.display = 'none';
+    				document.body.appendChild(archivo);
+    				archivo.click();
+    				document.body.removeChild(archivo);
+			}
+
+
+
+
+		</script>
+</head>
+<body>
+
+<select name="" id="">
+
+    <option value="alumnos">Alumnos</option>
+    <option value="academicos">Academicos</option>
+    <option value="administrativos">Administrativos</option>
+</select>
+
+<input type="button" value="Generar alumnos" onclick="generar()">
+<input type="button" value="Generar SQL" onclick="generarSQL()">
+<input type="button" value="Archivo CSV" onclick="generarCSV()">
+<input type="button" value="Generar Archivo JSON" onclick="generarJSON()">
+<input type="button" value="Generar Archivo EXCEL" onclick="generarEXCEL()">
+<input type="button" value="Generar Archivo PDF" onclick="generarPDF()">
+<input type="number" id="num" placeholder="Numero de entradas" value="5">
+<p id="salida"></p>
+</body>
+</html>
